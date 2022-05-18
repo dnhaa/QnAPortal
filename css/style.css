@@ -1,0 +1,31 @@
+body{
+    color: #2C285D;
+}
+.header 
+{
+    background-color: #2C285D;
+    padding: 0.9em;
+}
+header input {
+    border-color: #fff;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    background-color: #2C285D;
+    color: #fff;
+}
+.sidebar{
+    background-color: #2C285D;
+    
+}
+li{
+    list-style: none;
+    color: #fff;
+}
+.tag{
+    background-color: #b7b3e7;
+    padding: .7em;
+    margin: 0.5em;
+    text-align: center;
+    border-radius: 9px;
+}
