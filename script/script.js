@@ -1,3 +1,4 @@
+//this function will be developed later
 function takelife(){
     var life = document.getElementById('life').innerHTML;
     console.log(life);
