@@ -29,3 +29,17 @@ li{
     text-align: center;
     border-radius: 9px;
 }
+.downvote, .upvote {
+    display: inline-block;
+    cursor: pointer;
+    color: #687074
+  } 
+.downvote.off, .upvote.off {
+    display: inline-block;
+    cursor: pointer;
+    color: #687074
+  } 
+  
+  .downvote.on, .upvote.on {
+    color: #f48024
+  }
