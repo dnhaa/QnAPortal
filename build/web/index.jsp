@@ -51,15 +51,18 @@
     </header>
         <div class="row">
             <div class="col-md-12">
-                <a href="https://accounts.google.com/o/oauth2/auth/identifier?client_id=872517996573-61u2am7rk2fi8oeki0m1ga09194njris.apps.googleusercontent.com&redirect_uri=http://localhost:8084/QnAPortal&state=CFP4zgxwc1n9BN2RwQC8&scope=openid%20profile%20email&response_type=code&prompt=consent&access_type=offline&flowName=GeneralOAuthFlow">Click here to sign in with google</a>
+                <a href="https://accounts.google.com/o/oauth2/auth/identifier?client_id=872517996573-6g12q8o4ubik2d3t9mfg4k6hcde9vb5m.apps.googleusercontent.com&redirect_uri=http://localhost:8084/QnAPortal&state=CFP4zgxwc1n9BN2RwQC8&scope=https://www.googleapis.com/auth/plus.login&response_type=code&prompt=consent&access_type=offline&flowName=GeneralOAuthFlow">Click here to sign in with google</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form action="MainController">
+                    <input type="submit" value="Get user info" name="action"/>
+                </form>
             </div>
         </div>
         
-        <div class="row">
-            <div class="col-md-12">
-                <a href="https://accounts.google.com/oauth/oauth20/token">token</a>
-            </div>
-        </div>
+        
         <div class="row">
             <div class="col-md-3 sidebar">
                 <ul>
@@ -77,10 +80,10 @@
                     <div class="col-md-3 tag">#nodejs</div>
                 </div>
                 <%
-                    PostsDao dao = new PostsDao();
-                    dao.getPosts();
-                    List<Posts> listPosts = dao.getListPosts();
-                    request.setAttribute("LISTPOSTS", listPosts);
+//                    PostsDao dao = new PostsDao();
+//                    dao.getPosts();
+//                    List<Posts> listPosts = dao.getListPosts();
+//                    request.setAttribute("LISTPOSTS", listPosts);
                 %>
                 
                 <c:if test="${not empty requestScope.LISTPOSTS}">
@@ -117,6 +120,35 @@
                 </div>
                     </c:forEach>
                 </c:if>
+                <%--For displaying Previous link except for the 1st page --%>
+  <c:if test="${CURRENTPAGE != 1}">
+      <td><a href="employee.do?page=${CURRENTPAGE - 1}">Previous</a></td>
+  </c:if>
+  
+  <%--For displaying Page numbers. The when condition does not display
+              a link for the current page--%>
+  
+  <table border="1" cellpadding="5" cellspacing="5">
+      <tr>
+          <c:forEach begin="1" end="${NOOFPAGE}" var="i">
+              <c:choose>
+                  <c:when test="${CURRENTPAGE eq i}">
+                      <td>${i}</td>
+                  </c:when>
+                  <c:otherwise>
+                      <td><a href="?page=${i}">${i}</a></td>
+                  </c:otherwise>
+              </c:choose>
+          </c:forEach>
+      </tr>
+  </table>
+   <%--For displaying Next link --%>
+  
+  <c:if test="${CURRENTPAGE lt NOOFPAGE}">
+      <td><a href="?page=${CURRENTPAGE + 1}">Next</a></td>
+  </c:if>
+  
+</body>
             </div>
             <div class="col-md-3">
                 <div id="life">Take my life</div>

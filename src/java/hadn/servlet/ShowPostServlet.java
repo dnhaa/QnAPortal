@@ -38,9 +38,22 @@ public class ShowPostServlet extends HttpServlet {
         String url = "index.jsp";
         try {
             PostsDao dao = new PostsDao();
-            dao.getPosts();
+            //dao.getPosts();
+            
+            int postperpage = 3;
+            int page = 1;
+            if (request.getParameter("page") != null){
+                page = new Integer(request.getParameter("page"));
+            }
+            dao.getPostsPagination((page - 1) * postperpage + 1, page * postperpage);
             List<Posts> listPosts = dao.getListPosts();
+            dao.getPostsCount();
+            int listPostsLength = dao.getListPostsLength();
+            int noOfPage = (int)Math.ceil(listPostsLength * 1.0 /postperpage);
+            
             request.setAttribute("LISTPOSTS", listPosts);
+            request.setAttribute("NOOFPAGE", noOfPage);
+            request.setAttribute("CURRENTPAGE", page);
             request.getRequestDispatcher(url).forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();

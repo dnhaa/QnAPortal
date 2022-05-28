@@ -8,13 +8,21 @@
         <servlet-name>ShowPostServlet</servlet-name>
         <servlet-class>hadn.servlet.ShowPostServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GetUserInfoServlet</servlet-name>
+        <servlet-class>hadn.servlet.GetUserInfoServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MainController</servlet-name>
         <url-pattern>/MainController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ShowPostServlet</servlet-name>
-        <url-pattern>/ShowPostServlet</url-pattern>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetUserInfoServlet</servlet-name>
+        <url-pattern>/GetUserInfoServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -5,7 +5,7 @@
  */
 package hadn.servlet;
 
-
+import hadn.oauth2.PostRequest;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,12 +13,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 /**
  *
  * @author Admin
  */
-public class MainController extends HttpServlet {
+public class GetUserInfoServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,20 +31,10 @@ public class MainController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        try {
-            String url = "index.jsp";
-            String action = request.getParameter("action");
-            switch (action){
-                case "x":
-                    url = "ShowPostServlet";
-                    break;
-                case "Get user info":
-                    url = "GetUserInfoServlet";
-                    break;
-            }
-            request.getRequestDispatcher(url).forward(request, response);
-        } catch (Exception e) {
+        try (PrintWriter out = response.getWriter()) {
+            PostRequest pr = new PostRequest();
+            pr.getHttpCon();
+        } catch (Exception e){
             e.printStackTrace();
         }
     }
