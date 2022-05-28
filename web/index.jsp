@@ -10,6 +10,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
+<jsp:include page="ShowPostServlet" flush="true" />
 <html lang="en">
   <head>
     <title>Title</title>

@@ -18,7 +18,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ShowPostServlet</servlet-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern>/ShowPostServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>GetUserInfoServlet</servlet-name>
