@@ -10,7 +10,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<jsp:include page="ShowPostServlet" flush="true" />
+<%--<jsp:include page="ShowPostServlet" flush="true" />--%>
+<%--<c:redirect url="ShowPostServlet"/>--%>
 <html lang="en">
   <head>
     <title>Title</title>
@@ -52,7 +53,7 @@
     </header>
         <div class="row">
             <div class="col-md-12">
-                <a href="https://accounts.google.com/o/oauth2/auth/identifier?client_id=872517996573-6g12q8o4ubik2d3t9mfg4k6hcde9vb5m.apps.googleusercontent.com&redirect_uri=http://localhost:8084/QnAPortal&state=CFP4zgxwc1n9BN2RwQC8&scope=https://www.googleapis.com/auth/plus.login&response_type=code&prompt=consent&access_type=offline&flowName=GeneralOAuthFlow">Click here to sign in with google</a>
+                <a href="https://accounts.google.com/o/oauth2/auth/identifier?client_id=872517996573-61u2am7rk2fi8oeki0m1ga09194njris.apps.googleusercontent.com&redirect_uri=http://localhost:8084/QnAPortal&state=CFP4zgxwc1n9BN2RwQC8&scope=https://www.googleapis.com/auth/plus.login&response_type=code&prompt=consent&access_type=offline&flowName=GeneralOAuthFlow">Click here to sign in with google</a>
             </div>
         </div>
         <div class="row">
@@ -89,19 +90,31 @@
                 
                 <c:if test="${not empty requestScope.LISTPOSTS}">
                     <c:forEach var="dto" items="${requestScope.LISTPOSTS}">
+                        <form action="MainController" method="POST">
+                            
                     
                 <div class="row">
-                    
+                    <input type="hidden" name="postid" value="${dto.postid}" />
+                    <input type="hidden" name="votecount" value="${dto.votecount}" />
+                    <input type="hidden" name="currentpage" value="${CURRENTPAGE}" />
                     <div class="col-md-2">
                         <div class="upvote">
-                            <svg width="36" height="36">
-                                <path d="M2 20h32L18 1 2 20z" fill="currentColor" onclick="upvote()"></path>
-                              </svg>
+                            <label>
+                                <input type="submit" value="upvote" name="action" class="upvotebuton">
+                                <svg width="36" height="36">
+                                    <path d="M2 20h32L18 1 2 20z" fill="currentColor" onclick="upvote()"></path>
+                                </svg>
+                            </label>  
                         </div>
                         <div class="downvote">
+                            <label>
+                                <input type="submit" value="downvote" name="action" class="downvotebuton">
                             <svg width="36" height="36">
+                                
                                 <path d="M2 7h32L18 26 2 8z" fill="currentColor" onclick="downvote()"></path>
-                              </svg>
+                                
+                            </svg>
+                            </label>
                         </div>
                     </div>
                     <div class="col-md-10">
@@ -119,11 +132,13 @@
                     </div>
                     
                 </div>
+                </form>
+                        <hr>
                     </c:forEach>
                 </c:if>
                 <%--For displaying Previous link except for the 1st page --%>
   <c:if test="${CURRENTPAGE != 1}">
-      <td><a href="employee.do?page=${CURRENTPAGE - 1}">Previous</a></td>
+      <td><a href="?page=${CURRENTPAGE - 1}">Previous</a></td>
   </c:if>
   
   <%--For displaying Page numbers. The when condition does not display

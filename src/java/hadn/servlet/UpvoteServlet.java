@@ -6,22 +6,18 @@
 package hadn.servlet;
 
 import hadn.dao.PostsDao;
-import hadn.dto.Posts;
-
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 /**
  *
  * @author Admin
  */
-public class ShowPostServlet extends HttpServlet {
+public class UpvoteServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,27 +31,16 @@ public class ShowPostServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "index.jsp";
         try {
+            String postid = request.getParameter("postid");
+            String votecount = request.getParameter("votecount");
+            String currentpage = request.getParameter("currentpage");
             PostsDao dao = new PostsDao();
-            //dao.getPosts();
-            
-            int postperpage = 3;
-            int page = 1;
-            if (request.getParameter("page") != null){
-                page = new Integer(request.getParameter("page"));
+            int result = dao.updateVote(new Integer(postid), new Integer(votecount) + 1);
+            if (result > 0){
+                response.sendRedirect("ShowPostServlet?page=" + currentpage);
             }
-            dao.getPostsPagination((page - 1) * postperpage + 1, page * postperpage);
-            List<Posts> listPosts = dao.getListPosts();
-            dao.getPostsCount();
-            int listPostsLength = dao.getListPostsLength();
-            int noOfPage = (int)Math.ceil(listPostsLength * 1.0 /postperpage);
             
-            request.setAttribute("LISTPOSTS", listPosts);
-            request.setAttribute("NOOFPAGE", noOfPage);
-            request.setAttribute("CURRENTPAGE", page);
-            request.getRequestDispatcher(url).forward(request, response);
-//            response.sendRedirect(url);
         } catch (Exception e) {
             e.printStackTrace();
         }

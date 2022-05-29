@@ -89,9 +89,7 @@ public class PostsDao {
                     }
                     this.listPosts.add(p);
                 }
-                for (Posts listPost : listPosts) {
-                    System.out.println(listPost);
-                }
+                
                 cn.close();
             }
         } catch (Exception e) {
@@ -108,12 +106,29 @@ public class PostsDao {
                 ResultSet rs = stm.executeQuery(sql);
                 if (rs.next()){
                     listPostsLength = rs.getInt("countpost");
-                    
                 }
                 cn.close();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    public int updateVote(int postid, int votecount){
+        Connection cn = null;
+        int result = 0;
+        try {
+            cn = Utils.makeConnection();
+            if (cn != null){
+                String sql = "update Posts set votecount = ? where postid = ?";
+                PreparedStatement stm = cn.prepareStatement(sql);
+                stm.setInt(1, votecount);
+                stm.setInt(2, postid);
+                result = stm.executeUpdate();
+                cn.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 }

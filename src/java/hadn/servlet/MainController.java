@@ -37,12 +37,16 @@ public class MainController extends HttpServlet {
             String url = "index.jsp";
             String action = request.getParameter("action");
             switch (action){
-                case "x":
+                case "":
                     url = "ShowPostServlet";
                     break;
-                case "Get user info":
-                    url = "GetUserInfoServlet";
+                case "upvote":
+                    url = "UpvoteServlet";
                     break;
+                case "downvote":
+                    url = "DownvoteServlet";
+                    break;
+                    
             }
             request.getRequestDispatcher(url).forward(request, response);
         } catch (Exception e) {

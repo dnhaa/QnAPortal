@@ -12,12 +12,14 @@
             <file>file:/D:/fpt/code/frontend/QnAPortal/QnAPortal/src/java/hadn/servlet/MainController.java</file>
             <file>file:/D:/fpt/code/frontend/QnAPortal/QnAPortal/src/java/hadn/servlet/GetUserInfoServlet.java</file>
             <file>file:/D:/fpt/code/frontend/QnAPortal/QnAPortal/src/java/hadn/dto/Posts.java</file>
+            <file>file:/D:/fpt/code/frontend/QnAPortal/QnAPortal/src/java/hadn/servlet/UpvoteServlet.java</file>
             <file>file:/D:/fpt/code/frontend/QnAPortal/QnAPortal/src/java/hadn/servlet/ShowPostServlet.java</file>
             <file>file:/D:/fpt/code/frontend/QnAPortal/QnAPortal/web/login.jsp</file>
             <file>file:/D:/fpt/code/frontend/QnAPortal/QnAPortal/web/index.html</file>
             <file>file:/D:/fpt/code/frontend/QnAPortal/QnAPortal/src/java/hadn/lib/Utils.java</file>
             <file>file:/D:/fpt/code/frontend/QnAPortal/QnAPortal/src/java/hadn/resources/client_secret_872517996573-61u2am7rk2fi8oeki0m1ga09194njris.apps.googleusercontent.com.json</file>
             <file>file:/D:/fpt/code/frontend/QnAPortal/QnAPortal/nbproject/build-impl.xml</file>
+            <file>file:/D:/fpt/code/frontend/QnAPortal/QnAPortal/src/java/hadn/dto/Users.java</file>
         </group>
     </open-files>
 </project-private>
