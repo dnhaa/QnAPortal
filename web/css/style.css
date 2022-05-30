@@ -15,6 +15,14 @@ body{
 {
     background-color: #2C285D;
     padding: 0.9em;
+    color: #fff;
+}
+.headernav{
+    color: #fff;
+    
+}
+.headernav:hover{
+    cursor: pointer;
 }
 header input {
     border-color: #fff;
@@ -47,4 +55,29 @@ li{
 
   .downvote.on, .upvote.on {
     color: #f48024
+  }
+  .submitbutton{
+    background-color: #2C285D;
+    color: #fff;
+    padding: .7em;
+    margin: 0.5em;
+    text-align: center;
+    border-radius: 9px;
+  }
+  .login{
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 40%;
+      height: 30%;
+/*      margin-left: -20%;
+      margin-top: -15%;*/
+    transform: translate(-40%, -30%);
+      background-color: #2C285D;
+      color: #fff;
+      padding: .7em;
+      margin: 0.5em;
+      text-align: center;
+      border-radius: 9px;
+      z-index: 10;
   }

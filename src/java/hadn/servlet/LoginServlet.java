@@ -5,20 +5,21 @@
  */
 package hadn.servlet;
 
-
+import hadn.dao.UsersDao;
+import hadn.dto.Users;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Admin
  */
-public class MainController extends HttpServlet {
+public class LoginServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,30 +33,18 @@ public class MainController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
         try {
-            String url = "index.jsp";
-            String action = request.getParameter("action");
-            switch (action){
-                case "":
-                    url = "ShowPostServlet";
-                    break;
-                case "upvote":
-                    url = "UpvoteServlet";
-                    break;
-                case "downvote":
-                    url = "DownvoteServlet";
-                    break;
-                case "Create question":
-                    url = "CreateQuestionServlet";
-                    break;
-                case "Login":
-                    url = "LoginServlet";
-                    break;
-                    
-                    
+            String txtemail = request.getParameter("txtemail");
+            String txtpassword = request.getParameter("txtpassword");
+            UsersDao dao = new UsersDao();
+            dao.checkLogin(txtemail, txtpassword);
+            if (dao.getListUsers().size() > 0){
+                HttpSession session = request.getSession();
+                session.setAttribute("USER", dao.getListUsers().get(0));
+            } else {
+                response.sendRedirect("ShowPostServlet");
             }
-            request.getRequestDispatcher(url).forward(request, response);
+            response.sendRedirect("ShowPostServlet");
         } catch (Exception e) {
             e.printStackTrace();
         }

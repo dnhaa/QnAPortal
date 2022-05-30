@@ -20,6 +20,14 @@
         <servlet-name>DownvoteServlet</servlet-name>
         <servlet-class>hadn.servlet.DownvoteServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CreateQuestionServlet</servlet-name>
+        <servlet-class>hadn.servlet.CreateQuestionServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>hadn.servlet.LoginServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MainController</servlet-name>
         <url-pattern>/MainController</url-pattern>
@@ -39,6 +47,14 @@
     <servlet-mapping>
         <servlet-name>DownvoteServlet</servlet-name>
         <url-pattern>/DownvoteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateQuestionServlet</servlet-name>
+        <url-pattern>/CreateQuestionServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/LoginServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

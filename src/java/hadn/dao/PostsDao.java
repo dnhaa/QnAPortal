@@ -66,7 +66,7 @@ public class PostsDao {
             cn = Utils.makeConnection();
             if (cn != null){
                 String sql = "select * from (\n"
-                        + "	select postid, content, userid, reported, votecount, commentcount, timecreated, tagname, status, ROW_NUMBER() over (order by postid asc) as [rowno]\n"
+                        + "	select postid, content, userid, reported, votecount, commentcount, timecreated, tagname, status, ROW_NUMBER() over (order by timecreated desc) as [rowno]\n"
                         + "	from Posts\n"
                         + ") t where rowno between ? and ?";
                 PreparedStatement stm = cn.prepareStatement(sql);

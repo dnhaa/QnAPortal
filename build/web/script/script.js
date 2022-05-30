@@ -28,4 +28,9 @@ function upvote(){
     document.getElementsByClassName('downvote')[0].classList.toggle('on');
   }
 }
-  
+function openlogin(){
+    document.getElementsByClassName('login')[0].style.display="";
+}
+function closelogin(){
+    document.getElementsByClassName('login')[0].style.display="none";
+}
